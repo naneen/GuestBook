@@ -41,7 +41,7 @@ public class HelloController {
 
     @RequestMapping(value = "/result.html", method = RequestMethod.POST)
     public String resultPage(ModelMap model, @RequestParam("message") String message, @RequestParam("name") String name, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isValidate(request, response)) {
+        if ( isValidate(request, response) && paramNotEqual(name,message) ) {
             String url = "jdbc:mysql://localhost:3306/test";
             String username = "";
             String password = "";
@@ -69,6 +69,13 @@ public class HelloController {
             System.out.println("Goodbye!");
         }
         return "redirect:/";
+    }
+
+    private boolean paramNotEqual( String name, String message ) {
+        if( name.equals(message) ){
+            return false;
+        }
+        return true;
     }
 
     private ArrayList getDataList(int currentPage) {
