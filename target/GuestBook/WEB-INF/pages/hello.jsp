@@ -28,8 +28,6 @@
 </head>
 <body>
     <h1>${msg}</h1>
-    <h1>${Apage}</h1>
-    <h1>${Cpage}</h1>
     <%--<h1>${arrL[0].name}</h1>--%>
     <form id="myForm" name="myForm" action ="result.html" method="post">
         <div>
@@ -67,22 +65,20 @@
             </tr>
         </c:forEach>
     </table>
-    <br>
-    <a href="/GuestBook/?Page=${p}">${p}</a>
-    <br>
-    <c:forEach var="p" begin="1" end="${page}" >
-        <h3>${p}</h3>
-        <a href="/GuestBook/?Page=${p}">${p}</a>
-    </c:forEach>
-    <br>
 
-    <%--<ul class="pagination">--%>
-        <%--&lt;%&ndash;<li class="disabled"><a href="#">«</a></li>&ndash;%&gt;--%>
-        <%--&lt;%&ndash;<li class="active"><a href="#">1</a></li>&ndash;%&gt;--%>
-        <%--<c:forEach var="p" begin="1" end="${page}" >--%>
-            <%--<li><a href="/GuestBook/?Page=${p}">${p}</a></li>--%>
-        <%--</c:forEach>--%>
-    <%--</ul>--%>
+    <%--<br>--%>
+    <%--<c:forEach var="p" begin="1" end="${Apage}" >--%>
+        <%--<a href="/GuestBook/?Page=${p}">${p}</a>--%>
+    <%--</c:forEach>--%>
+    <%--<br>--%>
+
+    <ul class="pagination">
+        <%--<li class="disabled"><a href="#">«</a></li>--%>
+        <%--<li class="active"><a href="#">1</a></li>--%>
+        <c:forEach var="p" begin="1" end="${Apage}" >
+            <li><a href="/GuestBook/?Page=${p}">${p}</a></li>
+        </c:forEach>
+    </ul>
 
     <%--<c:set var="salary" scope="session" value="${2000*2}"/>--%>
     <%--<p>Your salary is : <c:out value="${salary}"/></p>--%>

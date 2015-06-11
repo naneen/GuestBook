@@ -73,26 +73,18 @@
     <%--<br>--%>
 
     <ul class="pagination">
-        <%--<li class="disabled"><a href="#">«</a></li>--%>
-        <%--<li class="active"><a href="#">1</a></li>--%>
+        <c:set var="current" scope="session" value="${Cpage}"/>
         <c:forEach var="p" begin="1" end="${Apage}" >
-            <li><a href="/GuestBook/?Page=${p}">${p}</a></li>
+            <c:choose>
+                <c:when test="${p == current}">
+                    <li class="active"><a href="/GuestBook/?Page=${p}">${p}</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="/GuestBook/?Page=${p}">${p}</a></li>
+                </c:otherwise>
+            </c:choose>
         </c:forEach>
     </ul>
-
-    <%--<c:set var="salary" scope="session" value="${2000*2}"/>--%>
-    <%--<p>Your salary is : <c:out value="${salary}"/></p>--%>
-    <%--<c:choose>--%>
-        <%--<c:when test="${salary <= 0}">--%>
-            <%--Salary is very low to survive.--%>
-        <%--</c:when>--%>
-        <%--<c:when test="${salary > 1000}">--%>
-            <%--Salary is very good.--%>
-        <%--</c:when>--%>
-        <%--<c:otherwise>--%>
-            <%--No comment sir...--%>
-        <%--</c:otherwise>--%>
-    <%--</c:choose>--%>
 
     <%-- ========================================================================================= SCRIPT --%>
     <script>
