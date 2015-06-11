@@ -1,7 +1,7 @@
 body{
     color: white;
     text-align: center;
-    background: #4aafec;
+    /*background: #4aafec;*/
     padding: 40px;
 }
 h1{
@@ -42,3 +42,14 @@ div{
     box-shadow: #BDC3C7 2px 2px 0px;
 }
 
+table{
+    font-size: 17px;
+    text-align: center;
+    border: 2px;
+    width: 40%;
+
+}
+
+th{
+    text-align: center;
+}

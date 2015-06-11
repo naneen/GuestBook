@@ -6,7 +6,7 @@
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" >
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <!-- jQuery library -->
@@ -50,7 +50,7 @@
 
     <br>
     <br>
-    <table border = "2" width="30%" align="center">
+    <table align="center">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -69,6 +69,29 @@
     <c:forEach var="p" begin="1" end="${page}" >
         <a href="/GuestBook/?Page=${p}">${p}</a>
     </c:forEach>
+    <br>
+
+    <ul class="pagination">
+        <%--<li class="disabled"><a href="#">«</a></li>--%>
+        <%--<li class="active"><a href="#">1</a></li>--%>
+        <c:forEach var="p" begin="1" end="${page}" >
+            <li><a href="/GuestBook/?Page=${p}">${p}</a></li>
+        </c:forEach>
+    </ul>
+
+    <%--<c:set var="salary" scope="session" value="${2000*2}"/>--%>
+    <%--<p>Your salary is : <c:out value="${salary}"/></p>--%>
+    <%--<c:choose>--%>
+        <%--<c:when test="${salary <= 0}">--%>
+            <%--Salary is very low to survive.--%>
+        <%--</c:when>--%>
+        <%--<c:when test="${salary > 1000}">--%>
+            <%--Salary is very good.--%>
+        <%--</c:when>--%>
+        <%--<c:otherwise>--%>
+            <%--No comment sir...--%>
+        <%--</c:otherwise>--%>
+    <%--</c:choose>--%>
 
     <script>
         // just for the demos, avoids form submit

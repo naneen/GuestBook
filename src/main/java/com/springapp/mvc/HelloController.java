@@ -22,13 +22,15 @@ public class HelloController {
         ArrayList<Box> arrL;
         if ( currentPage != null ) {
             arrL = getDataList(Integer.parseInt(currentPage) - 1);
+            model.addAttribute("Cpage", Integer.parseInt(currentPage));
         }
         else {
             arrL = getDataList(0);
+            model.addAttribute("Cpage", 1);
         }
         model.addAttribute("arrL", arrL);
         model.addAttribute("msg", "Information");
-        model.addAttribute("page", amountPage);
+        model.addAttribute("Apage", amountPage);
 //        model.addAttribute("message", database());
 		return "hello";
 	}

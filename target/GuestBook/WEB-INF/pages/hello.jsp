@@ -66,9 +66,14 @@
     </table>
 
     <br>
-    <c:forEach var="p" begin="0" end="${page}" >
-        <a href="/?Page=${p+1}">${p+1}</a>
+    <c:forEach var="p" begin="1" end="${page}" >
+        <a href="/GuestBook/?Page=${p}">${p}</a>
     </c:forEach>
+
+    <div class="counter"></div>
+
+    <button class="paginate left"><i></i><i></i></button>
+    <button class="paginate right"><i></i><i></i></button>
 
     <script>
         // just for the demos, avoids form submit
