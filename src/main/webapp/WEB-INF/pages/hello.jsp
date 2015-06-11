@@ -74,13 +74,13 @@
     </c:forEach>
     <br>
 
-    <ul class="pagination">
-        <%--<li class="disabled"><a href="#">«</a></li>--%>
-        <%--<li class="active"><a href="#">1</a></li>--%>
-        <c:forEach var="p" begin="1" end="${page}" >
-            <li><a href="/GuestBook/?Page=${p}">${p}</a></li>
-        </c:forEach>
-    </ul>
+    <%--<ul class="pagination">--%>
+        <%--&lt;%&ndash;<li class="disabled"><a href="#">«</a></li>&ndash;%&gt;--%>
+        <%--&lt;%&ndash;<li class="active"><a href="#">1</a></li>&ndash;%&gt;--%>
+        <%--<c:forEach var="p" begin="1" end="${page}" >--%>
+            <%--<li><a href="/GuestBook/?Page=${p}">${p}</a></li>--%>
+        <%--</c:forEach>--%>
+    <%--</ul>--%>
 
     <%--<c:set var="salary" scope="session" value="${2000*2}"/>--%>
     <%--<p>Your salary is : <c:out value="${salary}"/></p>--%>
