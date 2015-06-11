@@ -22,8 +22,6 @@
     <title>Index</title>
 
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" >
-    <link href="${pageContext.request.contextPath}/resources/css/page.css" rel="stylesheet" >
-    <script src="${pageContext.request.contextPath}/resources/js/pagination.js"></script>
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
@@ -68,19 +66,19 @@
         </c:forEach>
     </table>
 
-    <br>
-    <c:forEach var="p" begin="1" end="${page}" >
-        <a href="/GuestBook/?Page=${p}">${p}</a>
-    </c:forEach>
-    <br>
+    <%--<br>--%>
+    <%--<c:forEach var="p" begin="1" end="${Apage}" >--%>
+        <%--<a href="/GuestBook/?Page=${p}">${p}</a>--%>
+    <%--</c:forEach>--%>
+    <%--<br>--%>
 
-    <%--<ul class="pagination">--%>
-        <%--&lt;%&ndash;<li class="disabled"><a href="#">«</a></li>&ndash;%&gt;--%>
-        <%--&lt;%&ndash;<li class="active"><a href="#">1</a></li>&ndash;%&gt;--%>
-        <%--<c:forEach var="p" begin="1" end="${page}" >--%>
-            <%--<li><a href="/GuestBook/?Page=${p}">${p}</a></li>--%>
-        <%--</c:forEach>--%>
-    <%--</ul>--%>
+    <ul class="pagination">
+        <%--<li class="disabled"><a href="#">«</a></li>--%>
+        <%--<li class="active"><a href="#">1</a></li>--%>
+        <c:forEach var="p" begin="1" end="${Apage}" >
+            <li><a href="/GuestBook/?Page=${p}">${p}</a></li>
+        </c:forEach>
+    </ul>
 
     <%--<c:set var="salary" scope="session" value="${2000*2}"/>--%>
     <%--<p>Your salary is : <c:out value="${salary}"/></p>--%>
@@ -112,7 +110,6 @@
             }
         });
 
-        $("ul.pagination3").quickPagination({pagerLocation:"top",pageSize:"3"});
     </script>
 
 </body>

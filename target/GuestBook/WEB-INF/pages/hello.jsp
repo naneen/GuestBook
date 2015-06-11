@@ -22,14 +22,14 @@
     <title>Index</title>
 
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" >
-    <link href="${pageContext.request.contextPath}/resources/css/page.css" rel="stylesheet" >
-    <script src="${pageContext.request.contextPath}/resources/js/pagination.js"></script>
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 <body>
     <h1>${msg}</h1>
+    <h1>${Apage}</h1>
+    <h1>${Cpage}</h1>
     <%--<h1>${arrL[0].name}</h1>--%>
     <form id="myForm" name="myForm" action ="result.html" method="post">
         <div>
@@ -67,9 +67,11 @@
             </tr>
         </c:forEach>
     </table>
-
+    <br>
+    <a href="/GuestBook/?Page=${p}">${p}</a>
     <br>
     <c:forEach var="p" begin="1" end="${page}" >
+        <h3>${p}</h3>
         <a href="/GuestBook/?Page=${p}">${p}</a>
     </c:forEach>
     <br>
@@ -112,7 +114,6 @@
             }
         });
 
-        $("ul.pagination3").quickPagination({pagerLocation:"top",pageSize:"3"});
     </script>
 
 </body>
