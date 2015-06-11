@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="947f1137-8e02-45d3-ac48-67afbc6540c0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/hello.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/hello.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GuestBook.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -122,8 +122,8 @@
       <file leaf-file-name="hello.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/hello.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22310758" vertical-offset="1178" max-vertical-offset="1695">
-              <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.5816733" vertical-offset="428" max-vertical-offset="1635">
+              <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -778,12 +778,12 @@
       <workItem from="1434018342372" duration="3249000" />
       <workItem from="1434036169105" duration="530000" />
       <workItem from="1434039825456" duration="1144000" />
-      <workItem from="1434043460653" duration="470000" />
+      <workItem from="1434043460653" duration="712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46152000" />
+    <option name="totallyTimeSpent" value="46394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1439" height="824" extended-state="6" />
@@ -1310,8 +1310,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/hello.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22310758" vertical-offset="1178" max-vertical-offset="1695">
-          <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.5816733" vertical-offset="428" max-vertical-offset="1635">
+          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
           <folding />
         </state>
       </provider>

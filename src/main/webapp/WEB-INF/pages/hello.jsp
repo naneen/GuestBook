@@ -47,9 +47,6 @@
                 flat-primary-inner-butt" >Submit</button>
     </form>
 
-
-
-    <br>
     <br>
     <table align="center">
         <tr>
@@ -101,7 +98,6 @@
                 document.getElementById('myForm').submit();
             }
         });
-
     </script>
 
 </body>
