@@ -25,6 +25,8 @@
     <link href="${pageContext.request.contextPath}/resources/css/page.css" rel="stylesheet" >
     <script src="${pageContext.request.contextPath}/resources/js/pagination.js"></script>
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head>
 <body>
     <h1>${msg}</h1>
@@ -41,12 +43,13 @@
             <input type="text" class="form-control" id="name" name="name" required>
         </div>
         <br>
+        <div class="g-recaptcha" data-sitekey="6LctMggTAAAAAHhA5WsS95IpWHXUkORT1qYg44wn" data-theme="white"></div>
         <br>
-        <%--<input type="submit" value="Submit" id="submitB" name="submitB">--%>
-        <%--<button type="submit"  class="btn btn-default">Submit</button>--%>
         <button type="submit"  class="flat-butt flat-primary-butt flat-inner-butt
-                flat-primary-inner-butt">Submit</button>
+                flat-primary-inner-butt" >Submit</button>
     </form>
+
+
 
     <br>
     <br>
@@ -93,6 +96,7 @@
         <%--</c:otherwise>--%>
     <%--</c:choose>--%>
 
+    <%-- ========================================================================================= SCRIPT --%>
     <script>
         // just for the demos, avoids form submit
         jQuery.validator.setDefaults({

@@ -6,7 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -16,15 +21,14 @@ public class HelloController {
 
     int amountPage = 0;
 
-	@RequestMapping( value="/", method = RequestMethod.GET)
-	public String printWelcome(ModelMap model, HttpServletRequest request) {
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String printWelcome(ModelMap model, HttpServletRequest request) {
         String currentPage = request.getParameter("Page");
         ArrayList<Box> arrL;
-        if ( currentPage != null ) {
+        if (currentPage != null) {
             arrL = getDataList(Integer.parseInt(currentPage) - 1);
             model.addAttribute("Cpage", Integer.parseInt(currentPage));
-        }
-        else {
+        } else {
             arrL = getDataList(0);
             model.addAttribute("Cpage", 1);
         }
@@ -32,40 +36,42 @@ public class HelloController {
         model.addAttribute("msg", "Information");
         model.addAttribute("Apage", amountPage);
 //        model.addAttribute("message", database());
-		return "hello";
-	}
+        return "hello";
+    }
 
-    @RequestMapping(value="/result.html",method = RequestMethod.POST)
-    public String resultPage(ModelMap model, @RequestParam("message") String message, @RequestParam("name") String name) {
-        String url = "jdbc:mysql://localhost:3306/test";
-        String username = "";
-        String password = "";
-        Connection connection;
+    @RequestMapping(value = "/result.html", method = RequestMethod.POST)
+    public String resultPage(ModelMap model, @RequestParam("message") String message, @RequestParam("name") String name, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (isValidate(request, response)) {
+            String url = "jdbc:mysql://localhost:3306/test";
+            String username = "";
+            String password = "";
+            Connection connection;
 
-        System.out.println("Connecting database...");
+            System.out.println("Connecting database...");
 
-        try {
-            connection = DriverManager.getConnection(url, username, password);
             try {
-                System.out.println("Database connected!");
+                connection = DriverManager.getConnection(url, username, password);
+                try {
+                    System.out.println("Database connected!");
 
-                Statement stmt = connection.createStatement();
+                    Statement stmt = connection.createStatement();
 
-                String sql = "insert into box (box_message, box_name)values('" + message + "', '"+ name +"')";
-                stmt.executeUpdate(sql);
+                    String sql = "insert into box (box_message, box_name)values('" + message + "', '" + name + "')";
+                    stmt.executeUpdate(sql);
 
-            } finally {
-                connection.close();
+                } finally {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new IllegalStateException("Cannot connect the database!", e);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new IllegalStateException("Cannot connect the database!", e);
+            System.out.println("Goodbye!");
         }
-        System.out.println("Goodbye!");
         return "redirect:/";
     }
 
-    private ArrayList getDataList( int currentPage ){
+    private ArrayList getDataList(int currentPage) {
         ArrayList<Box> pageList = new ArrayList<Box>();
 
         String url = "jdbc:mysql://localhost:3306/test";
@@ -88,8 +94,8 @@ public class HelloController {
                 int max = 10;
                 calPageNumber(numRow, max);
 
-                String index = (currentPage*max)+"";
-                ResultSet r = stmt.executeQuery("select * from box order by box_id DESC LIMIT "+index+","+max);
+                String index = (currentPage * max) + "";
+                ResultSet r = stmt.executeQuery("select * from box order by box_id DESC LIMIT " + index + "," + max);
                 Box box = null;
                 while (r.next()) {
                     box = new Box();
@@ -111,10 +117,18 @@ public class HelloController {
         return pageList;
     }
 
-    private void calPageNumber( int all, double limit ){
-        amountPage = (int)Math.ceil(all/limit);
+    private void calPageNumber(int all, double limit) {
+        amountPage = (int) Math.ceil(all / limit);
         System.out.println(amountPage);
     }
 
+    protected boolean isValidate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // get reCAPTCHA request param
+        String gRecaptchaResponse = request
+                .getParameter("g-recaptcha-response");
+        System.out.println(gRecaptchaResponse);
+        return VerifyReCaptcha.verify(gRecaptchaResponse);
 
+    }
 }
+

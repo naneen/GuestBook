@@ -6,7 +6,7 @@
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" >
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <!-- jQuery library -->
@@ -25,6 +25,8 @@
     <link href="${pageContext.request.contextPath}/resources/css/page.css" rel="stylesheet" >
     <script src="${pageContext.request.contextPath}/resources/js/pagination.js"></script>
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head>
 <body>
     <h1>${msg}</h1>
@@ -41,16 +43,17 @@
             <input type="text" class="form-control" id="name" name="name" required>
         </div>
         <br>
+        <div class="g-recaptcha" data-sitekey="6LctMggTAAAAAHhA5WsS95IpWHXUkORT1qYg44wn" data-theme="white"></div>
         <br>
-        <%--<input type="submit" value="Submit" id="submitB" name="submitB">--%>
-        <%--<button type="submit"  class="btn btn-default">Submit</button>--%>
         <button type="submit"  class="flat-butt flat-primary-butt flat-inner-butt
-                flat-primary-inner-butt">Submit</button>
+                flat-primary-inner-butt" >Submit</button>
     </form>
+
+
 
     <br>
     <br>
-    <table border = "2" width="30%" align="center">
+    <table align="center">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -69,12 +72,31 @@
     <c:forEach var="p" begin="1" end="${page}" >
         <a href="/GuestBook/?Page=${p}">${p}</a>
     </c:forEach>
+    <br>
 
-    <div class="counter"></div>
+    <ul class="pagination">
+        <%--<li class="disabled"><a href="#">«</a></li>--%>
+        <%--<li class="active"><a href="#">1</a></li>--%>
+        <c:forEach var="p" begin="1" end="${page}" >
+            <li><a href="/GuestBook/?Page=${p}">${p}</a></li>
+        </c:forEach>
+    </ul>
 
-    <button class="paginate left"><i></i><i></i></button>
-    <button class="paginate right"><i></i><i></i></button>
+    <%--<c:set var="salary" scope="session" value="${2000*2}"/>--%>
+    <%--<p>Your salary is : <c:out value="${salary}"/></p>--%>
+    <%--<c:choose>--%>
+        <%--<c:when test="${salary <= 0}">--%>
+            <%--Salary is very low to survive.--%>
+        <%--</c:when>--%>
+        <%--<c:when test="${salary > 1000}">--%>
+            <%--Salary is very good.--%>
+        <%--</c:when>--%>
+        <%--<c:otherwise>--%>
+            <%--No comment sir...--%>
+        <%--</c:otherwise>--%>
+    <%--</c:choose>--%>
 
+    <%-- ========================================================================================= SCRIPT --%>
     <script>
         // just for the demos, avoids form submit
         jQuery.validator.setDefaults({
