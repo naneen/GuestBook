@@ -1,0 +1,44 @@
+body{
+    color: white;
+    text-align: center;
+    background: #4aafec;
+    padding: 40px;
+}
+h1{
+    color: #f7fff3;
+}
+div{
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+/*button*/
+.flat-butt {
+    width: 40%;
+    display: inline-block;
+    margin: 0 5px;
+    border-radius: 6px;
+    font-family: "Lato", sans-serif;
+    font-size: 16.5px;
+    padding: 12px 20px;
+    border: 0;
+    background: #34495E;
+    color: #FFF;
+    cursor: pointer;
+    outline: 0;
+}
+.flat-butt:hover {
+    background: #005580;
+}
+.flat-primary-butt {
+    background: #f3ca35;
+}
+.flat-primary-butt:hover {
+    background: #f3ca35;
+}
+.flat-outer-butt {
+    padding: 11px 0px;
+    box-shadow: #BDC3C7 2px 2px 0px;
+}
+
