@@ -29,6 +29,8 @@
 <body>
     <h1>${msg}</h1>
     <%--<h1>${arrL[0].name}</h1>--%>
+    <h4>${error}</h4>
+    <br>
     <form id="myForm" name="myForm" action ="result.html" method="post">
         <div>
             <label for="message">message:</label>
@@ -47,21 +49,18 @@
                 flat-primary-inner-butt" >Submit</button>
     </form>
 
-
-
-    <br>
     <br>
     <table align="center">
         <tr>
             <th>ID</th>
-            <th>Name</th>
             <th>Message</th>
+            <th>Name</th>
         </tr>
         <c:forEach items="${arrL}" var="arr">
             <tr>
                 <td>${arr.id}</td>
-                <td>${arr.name}</td>
                 <td>${arr.msg}</td>
+                <td>${arr.name}</td>
             </tr>
         </c:forEach>
     </table>
@@ -73,26 +72,56 @@
     <%--<br>--%>
 
     <ul class="pagination">
-        <%--<li class="disabled"><a href="#">«</a></li>--%>
-        <%--<li class="active"><a href="#">1</a></li>--%>
+        <c:set var="current" scope="session" value="${Cpage}"/>
         <c:forEach var="p" begin="1" end="${Apage}" >
-            <li><a href="/GuestBook/?Page=${p}">${p}</a></li>
+            <c:choose>
+                <c:when test="${p == current}">
+                    <li class="active"><a href="/GuestBook/?Page=${p}">${p}</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="/GuestBook/?Page=${p}">${p}</a></li>
+                </c:otherwise>
+            </c:choose>
         </c:forEach>
     </ul>
 
-    <%--<c:set var="salary" scope="session" value="${2000*2}"/>--%>
-    <%--<p>Your salary is : <c:out value="${salary}"/></p>--%>
-    <%--<c:choose>--%>
-        <%--<c:when test="${salary <= 0}">--%>
-            <%--Salary is very low to survive.--%>
-        <%--</c:when>--%>
-        <%--<c:when test="${salary > 1000}">--%>
-            <%--Salary is very good.--%>
-        <%--</c:when>--%>
-        <%--<c:otherwise>--%>
-            <%--No comment sir...--%>
-        <%--</c:otherwise>--%>
-    <%--</c:choose>--%>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-4 column">
+                <h2>
+                    Heading
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                </p>
+                <p>
+                    <a class="btn" href="#">View details »</a>
+                </p>
+            </div>
+            <div class="col-md-4 column">
+                <h2>
+                    Heading
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                </p>
+                <p>
+                    <a class="btn" href="#">View details »</a>
+                </p>
+            </div>
+            <div class="col-md-4 column">
+                <h2>
+                    Heading
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                </p>
+                <p>
+                    <a class="btn" href="#">View details »</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
     <%-- ========================================================================================= SCRIPT --%>
     <script>
@@ -109,7 +138,6 @@
                 document.getElementById('myForm').submit();
             }
         });
-
     </script>
 
 </body>

@@ -29,6 +29,8 @@
 <body>
     <h1>${msg}</h1>
     <%--<h1>${arrL[0].name}</h1>--%>
+    <h4>${error}</h4>
+    <br>
     <form id="myForm" name="myForm" action ="result.html" method="post">
         <div>
             <label for="message">message:</label>
@@ -51,14 +53,14 @@
     <table align="center">
         <tr>
             <th>ID</th>
-            <th>Name</th>
             <th>Message</th>
+            <th>Name</th>
         </tr>
         <c:forEach items="${arrL}" var="arr">
             <tr>
                 <td>${arr.id}</td>
-                <td>${arr.name}</td>
                 <td>${arr.msg}</td>
+                <td>${arr.name}</td>
             </tr>
         </c:forEach>
     </table>
@@ -82,6 +84,44 @@
             </c:choose>
         </c:forEach>
     </ul>
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-4 column">
+                <h2>
+                    Heading
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                </p>
+                <p>
+                    <a class="btn" href="#">View details »</a>
+                </p>
+            </div>
+            <div class="col-md-4 column">
+                <h2>
+                    Heading
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                </p>
+                <p>
+                    <a class="btn" href="#">View details »</a>
+                </p>
+            </div>
+            <div class="col-md-4 column">
+                <h2>
+                    Heading
+                </h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                </p>
+                <p>
+                    <a class="btn" href="#">View details »</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
     <%-- ========================================================================================= SCRIPT --%>
     <script>

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class HelloController {
 
     int amountPage = 0;
+    String error = "";
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String printWelcome(ModelMap model, HttpServletRequest request) {
@@ -35,40 +36,53 @@ public class HelloController {
         model.addAttribute("arrL", arrL);
         model.addAttribute("msg", "Information");
         model.addAttribute("Apage", amountPage);
+        model.addAttribute("error", error);
 //        model.addAttribute("message", database());
         return "hello";
     }
 
     @RequestMapping(value = "/result.html", method = RequestMethod.POST)
     public String resultPage(ModelMap model, @RequestParam("message") String message, @RequestParam("name") String name, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("name:"+name+" , msg:"+message);
         if ( isValidate(request, response) && paramNotEqual(name,message) ) {
-            String url = "jdbc:mysql://localhost:3306/test";
-            String username = "";
-            String password = "";
-            Connection connection;
-
-            System.out.println("Connecting database...");
-
-            try {
-                connection = DriverManager.getConnection(url, username, password);
-                try {
-                    System.out.println("Database connected!");
-
-                    Statement stmt = connection.createStatement();
-
-                    String sql = "insert into box (box_message, box_name)values('" + message + "', '" + name + "')";
-                    stmt.executeUpdate(sql);
-
-                } finally {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                throw new IllegalStateException("Cannot connect the database!", e);
-            }
-            System.out.println("Goodbye!");
+            insertQuery(message,name);
+            this.error = "";
+        }
+        else if ( !paramNotEqual(name,message) ){
+            this.error = "error : name and message must be difference";
+        }
+        else if ( !isValidate(request,response)  ){
+            this.error = "error : no captcha";
         }
         return "redirect:/";
+    }
+
+    private void insertQuery( String message, String name ){
+        String url = "jdbc:mysql://localhost:3306/test";
+        String username = "";
+        String password = "";
+        Connection connection;
+
+        System.out.println("Connecting database...");
+
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+            try {
+                System.out.println("Database connected!");
+
+                Statement stmt = connection.createStatement();
+
+                String sql = "insert into box (box_message, box_name)values('" + message + "', '" + name + "')";
+                stmt.executeUpdate(sql);
+
+            } finally {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+        System.out.println("Goodbye!");
     }
 
     private boolean paramNotEqual( String name, String message ) {
@@ -131,11 +145,9 @@ public class HelloController {
 
     protected boolean isValidate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // get reCAPTCHA request param
-        String gRecaptchaResponse = request
-                .getParameter("g-recaptcha-response");
+        String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
         System.out.println(gRecaptchaResponse);
         return VerifyReCaptcha.verify(gRecaptchaResponse);
-
     }
 }
 

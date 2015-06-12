@@ -47,6 +47,9 @@ table{
     text-align: center;
     border: 2px;
     width: 40%;
+    border-color: #ffffff;
+    background-color: #E26A6A;
+    /*background-color: rgb(198, 85, 87);*/
 
 }
 
@@ -55,5 +58,11 @@ th{
 }
 
 h1{
-    color: #ec5a53;
+    font-size: 45px;
+    color: #F9BF3B;
+    /*color: #ec5a53;*/
+}
+
+h4{
+    color: #EF4836;
 }
